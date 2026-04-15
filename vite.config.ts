@@ -7,6 +7,7 @@ import { nodePolyfills } from 'vite-plugin-node-polyfills'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: '/6502-WEBULATOR/',
   plugins: [
     vue(),
     vueDevTools(),
