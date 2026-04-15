@@ -8,13 +8,13 @@
 
     <!-- Load Cart -->
     <button @click="cartInput?.click()" title="Load Cart">
-      <Square3Stack3DIcon class="size-6" />
+      <DocumentPlusIcon class="size-6" />
     </button>
     <input ref="cartInput" type="file" accept=".bin,.cart" class="hidden" @change="onLoadCart" />
 
     <!-- Load Program -->
     <button @click="programInput?.click()" title="Load Program">
-      <DocumentArrowUpIcon class="size-6" />
+      <DocumentCurrencyDollarIcon class="size-6" />
     </button>
     <input ref="programInput" type="file" accept=".bin,.prg" class="hidden" @change="onLoadProgram" />
 
@@ -51,8 +51,8 @@ import {
   StopIcon,
   ArrowPathIcon,
   CircleStackIcon,
-  Square3Stack3DIcon,
-  DocumentArrowUpIcon,
+  DocumentPlusIcon,
+  DocumentCurrencyDollarIcon,
   LinkIcon,
   LinkSlashIcon,
 } from '@heroicons/vue/24/solid'

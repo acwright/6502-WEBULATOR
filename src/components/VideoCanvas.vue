@@ -1,29 +1,45 @@
 <template>
-  <canvas ref="canvasRef" width="320" height="240" :style="canvasStyle" class="rounded-lg" />
+  <canvas
+    ref="canvasRef"
+    width="320"
+    height="240"
+    :style="{ width: cssWidth, height: cssHeight }"
+    class="rounded-lg [image-rendering:pixelated]"
+  />
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted, onUnmounted } from 'vue'
+import { ref, onMounted, onUnmounted } from 'vue'
 import { useEmulatorStore } from '@/stores/emulator'
 import type { Video } from 'ac6502'
 
+const NATIVE_W = 320
+const NATIVE_H = 240
+const ASPECT = NATIVE_W / NATIVE_H
+
 const emulator = useEmulatorStore()
 const canvasRef = ref<HTMLCanvasElement | null>(null)
-const scale = ref(1)
+const cssWidth = ref(`${NATIVE_W}px`)
+const cssHeight = ref(`${NATIVE_H}px`)
 
 let ctx: CanvasRenderingContext2D | null = null
 let resizeObserver: ResizeObserver | null = null
 
-const canvasStyle = computed(() => ({
-  width: `${320 * scale.value}px`,
-  height: `${240 * scale.value}px`,
-  imageRendering: 'pixelated' as const,
-}))
+function updateSize(main: Element) {
+  const halfW = main.clientWidth * 0.5
+  const halfH = main.clientHeight * 0.5
 
-function updateScale(main: Element) {
-  const mainW = main.clientWidth
-  const mainH = main.clientHeight
-  scale.value = Math.max(1, Math.floor(Math.min(mainW * 0.5 / 320, mainH * 0.5 / 240)))
+  let w: number, h: number
+  if (halfW / halfH > ASPECT) {
+    h = halfH
+    w = h * ASPECT
+  } else {
+    w = halfW
+    h = w / ASPECT
+  }
+
+  cssWidth.value = `${Math.round(w)}px`
+  cssHeight.value = `${Math.round(h)}px`
 }
 
 function render() {
@@ -41,8 +57,8 @@ onMounted(() => {
 
   const main = canvasRef.value?.closest('main')
   if (main) {
-    updateScale(main)
-    resizeObserver = new ResizeObserver(() => updateScale(main))
+    updateSize(main)
+    resizeObserver = new ResizeObserver(() => updateSize(main))
     resizeObserver.observe(main)
   }
 })
