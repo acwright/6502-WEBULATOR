@@ -2,7 +2,7 @@
   <div class="flex flex-row items-center gap-4 mt-4">
     <!-- Load ROM -->
     <button @click="romInput?.click()" title="Load ROM">
-      <CircleStackIcon class="size-6" />
+      <CpuChipIcon class="size-6" />
     </button>
     <input ref="romInput" type="file" accept=".bin,.rom" class="hidden" @change="onLoadROM" />
 
@@ -50,7 +50,7 @@ import {
   PlayIcon,
   StopIcon,
   ArrowPathIcon,
-  CircleStackIcon,
+  CpuChipIcon,
   DocumentPlusIcon,
   DocumentCurrencyDollarIcon,
   LinkIcon,
