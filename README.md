@@ -1,6 +1,6 @@
 # 6502 WEBULATOR
 
-Web based emulator app for the [A.C. Wright 6502 project](https://github.com/acwright/6502).
+Web based comprehensive, cycle-accurate emulator for the [A.C. Wright 6502](https://github.com/acwright/6502-ACE) family of computer systems, built with TypeScript and Node.js.
 
 ## Try It NOW
 
