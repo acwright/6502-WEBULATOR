@@ -1,3 +1,12 @@
+> **⚠ This repository is deprecated and has been archived.**
+>
+> The web emulator has been consolidated into **[6502-EMULATOR](https://github.com/acwright/6502-EMULATOR)**, which now produces both native desktop distributables (macOS, Windows, Linux) *and* a GitHub Pages web build from a single codebase.
+>
+> - **Web app:** [https://acwright.github.io/6502-EMULATOR/](https://acwright.github.io/6502-EMULATOR/)
+> - **Source & releases:** [https://github.com/acwright/6502-EMULATOR](https://github.com/acwright/6502-EMULATOR)
+
+---
+
 # 6502 WEBULATOR
 
 Web based comprehensive, cycle-accurate emulator for the [A.C. Wright 6502](https://github.com/acwright/6502-ACE) family of computer systems, built with TypeScript and Node.js.
